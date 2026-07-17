@@ -33,6 +33,7 @@ def send_sms(to_number: str, message: str):
     to_number = _normalize_number(to_number)
     try:
         response = _sms.send(message, [to_number], sender_id=AT_SENDER_ID)
+        print(f"[sms.send_sms] sent to {to_number}: {message}")
         return response
     except Exception as exc:
         # Never let an SMS-send failure crash the webhook — log and move on.
